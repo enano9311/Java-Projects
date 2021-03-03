@@ -3,6 +3,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import CardGame.Card;
 import CardGame.Suit;
 import CardGame.FaceValue;
+import java.util.Collections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,21 +44,21 @@ public class Deck {
     // give one random card
     public Card DrawCard()
     {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, this.allCards.size());
-
-        Card card;
-        try
-        {
-            card = this.allCards.get(randomNum);
-            this.allCards.remove(randomNum);
-        }
-        catch(Exception e)
-        {
-            System.out.println("");
-            return null;
-        }
-
-        return card;
+//        int randomNum = ThreadLocalRandom.current().nextInt(0, this.allCards.size());
+//
+//        Card card;
+//        try
+//        {
+//            card = this.allCards.get(randomNum);
+//            this.allCards.remove(randomNum);
+//        }
+//        catch(Exception e)
+//        {
+//            System.out.println("");
+//            return null;
+//        }
+//      return card;
+        return this.allCards.remove(0);
     }
 
     public void AddCard(Card newCard)
@@ -67,7 +68,8 @@ public class Deck {
 
     public List<Card> Shuffle()
     {
-        return null;
+        Collections.shuffle(this.allCards);
+        return this.allCards;
     }
 
     public Integer Size()

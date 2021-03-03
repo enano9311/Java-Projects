@@ -18,6 +18,7 @@ public class WarGame {
         this.Player2Deck.EmptyDeck();
 
         Deck startingDeck = new Deck();
+        startingDeck.Shuffle();
         Integer startingDeckSize = startingDeck.Size();
         for(int i = 0; i < startingDeckSize/2; i++)
         {
