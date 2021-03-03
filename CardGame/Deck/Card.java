@@ -1,7 +1,4 @@
-package CardGame;
-import java.util.HashMap;
-import CardGame.FaceValue;
-import CardGame.Suit;
+package CardGame.Deck;
 
 public class Card
 {

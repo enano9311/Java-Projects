@@ -1,4 +1,7 @@
-package CardGame;
+package CardGame.Games;
+
+import CardGame.Deck.Card;
+import CardGame.Deck.Deck;
 
 public class WarGame {
 

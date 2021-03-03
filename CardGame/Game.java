@@ -1,13 +1,5 @@
 package CardGame;
-import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import CardGame.Card;
-import CardGame.Suit;
-import CardGame.FaceValue;
-import CardGame.Deck;
-import CardGame.WarGame;
+import CardGame.Games.WarGame;
 
 public class Game {
 
@@ -29,6 +21,6 @@ public class Game {
         }
         System.out.println("GAME COMPLETED!");
         System.out.println(wGame.GetCurrentScore());
-        
+
     }
 }

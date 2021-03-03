@@ -1,4 +1,4 @@
-package CardGame;
+package CardGame.Deck;
 
 public enum FaceValue
 {

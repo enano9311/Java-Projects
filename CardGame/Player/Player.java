@@ -1,4 +1,6 @@
-package CardGame;
+package CardGame.Player;
+
+import CardGame.Deck.Deck;
 
 public class Player {
 

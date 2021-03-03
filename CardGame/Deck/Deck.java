@@ -1,10 +1,5 @@
-package CardGame;
-import java.util.concurrent.ThreadLocalRandom;
-import CardGame.Card;
-import CardGame.Suit;
-import CardGame.FaceValue;
+package CardGame.Deck;
 import java.util.Collections;
-
 import java.util.ArrayList;
 import java.util.List;
 
