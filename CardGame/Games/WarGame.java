@@ -1,70 +1,95 @@
 package CardGame.Games;
-
+import CardGame.Player.WarPlayer;
 import CardGame.Deck.Card;
 import CardGame.Deck.Deck;
 
+import java.util.ArrayList;
+
 public class WarGame {
 
-    private Deck Player1Deck;
-    private Deck Player2Deck;
-    public Integer Player1Score;
-    public Integer Player2Score;
+
+    private WarPlayer player1;
+    private WarPlayer player2;
 
     // give 26 randomly drawn cards to player 1, remaining to player 2 WLOG
-    public WarGame()
+    public WarGame(String player1Name, String player2Name)
     {
-        this.Player1Score = 0;
-        this.Player2Score = 0;
-        this.Player1Deck = new Deck();
-        this.Player1Deck.EmptyDeck();
-        this.Player2Deck = new Deck();
-        this.Player2Deck.EmptyDeck();
+        Deck Player1Deck = new Deck();
+        Player1Deck.EmptyDeck();
+        Deck Player2Deck = new Deck();
+        Player2Deck.EmptyDeck();
 
         Deck startingDeck = new Deck();
         startingDeck.Shuffle();
         Integer startingDeckSize = startingDeck.Size();
         for(int i = 0; i < startingDeckSize/2; i++)
         {
-            this.Player1Deck.AddCard(startingDeck.DrawCard());
+            Player1Deck.AddCard(startingDeck.DrawCard());
         }
-        this.Player2Deck = startingDeck;
+        Player2Deck = startingDeck;
+
+        this.player1 = new WarPlayer(Player1Deck, player1Name, 0);
+        this.player2 = new WarPlayer(Player2Deck, player2Name, 0);
     }
 
-    public void DoTurn() throws Exception
+    public void DoTurn(ArrayList<Card> pot) throws Exception
     {
-        Card card1 = this.Player1Deck.DrawCard();
-        Card card2 = this.Player2Deck.DrawCard();
+        Card card1 = this.player1.playCard();
+        Card card2 = this.player2.playCard();
+        WarPlayer winningPlayer;
 
-        System.out.println("Player 1 plays: " + card1 + "\nPlayer 2 plays: " + card2);
-        if(card1.getNumericalScore() > card2.getNumericalScore() || card2.getNumericalScore() == null)
+        System.out.println(player1.getName() + " plays: " + card1);
+        System.out.println(player2.getName() + " plays: " + card2);
+        if(player1.cardScore(card1) > player2.cardScore(card2) || player2.cardScore(card2) == null)
         {
-            System.out.println("Player 1 wins this hand!");
-            this.Player1Score ++;
+            this.player1.incrementScore();
+            winningPlayer = player1;
         }
-        else if (card2.getNumericalScore() > card1.getNumericalScore() || card1.getNumericalScore() == null)
+        else if (player2.cardScore(card2) > player1.cardScore(card1) || player1.cardScore(card1) == null)
         {
-            System.out.println("Player 2 wins this hand!");
-            this.Player2Score++;
+            this.player2.incrementScore();
+            winningPlayer = player2;
         }
-        else if (card2.getNumericalScore() == card1.getNumericalScore())
+        else if (player2.cardScore(card2) == player1.cardScore(card1))
         {
-            System.out.println("a goddamn tie!");
-            //handleTieTurn();
+            System.out.println("A tie. Each player puts two cards in the pot!!");
+            pot.add(card1);
+            pot.add(card2);
+            pot.add(this.player1.playCard());
+            pot.add(this.player1.playCard());
+            pot.add(this.player2.playCard());
+            pot.add(this.player2.playCard());
+            System.out.println("POT SIZE " + pot.size());
+            winningPlayer = null;
+            DoTurn(pot);
         }
         else
         {
+            winningPlayer = null;
             throw new Exception("CardArithmeticFailure");
         }
+
+        System.out.println(winningPlayer.getName() + " won that hand!");
+        winningPlayer.addCard(card1);
+        winningPlayer.addCard(card2);
+        for(Card card : pot)
+        {
+            System.out.println(winningPlayer.getName() + " gets: " + card.toString());
+            winningPlayer.addCard(card);
+        }
+        pot.clear();
     }
 
     public String GetCurrentScore()
     {
-        return "Player 1 score: " + this.Player1Score + "\nPlayer 2 score: " + this.Player2Score;
+        String player1Information = this.player1.getName() + " cards remaining: " + this.player1.getDeck().Size();
+        String player2Information = this.player2.getName() + " cards remaining: " + this.player2.getDeck().Size();
+        return player1Information + "\n" + player2Information;
     }
 
     public Boolean GameFinished()
     {
-        return Player1Deck.Size() > 0 || Player2Deck.Size() > 0;
+        return this.player1.getDeck().Size() > 0 && this.player2.getDeck().Size() > 0;
     }
 
     private void handleTieTurn () {}

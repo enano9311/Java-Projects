@@ -39,20 +39,6 @@ public class Deck {
     // give one random card
     public Card DrawCard()
     {
-//        int randomNum = ThreadLocalRandom.current().nextInt(0, this.allCards.size());
-//
-//        Card card;
-//        try
-//        {
-//            card = this.allCards.get(randomNum);
-//            this.allCards.remove(randomNum);
-//        }
-//        catch(Exception e)
-//        {
-//            System.out.println("");
-//            return null;
-//        }
-//      return card;
         return this.allCards.remove(0);
     }
 

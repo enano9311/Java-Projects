@@ -1,25 +1,25 @@
 package CardGame.Player;
 import CardGame.Deck.Card;
-import CardGame.Deck.FaceValue;
 import CardGame.Deck.Deck;
+import CardGame.Deck.FaceValue;
 
-public class Player {
+public class BlackjackPlayer extends Player {
 
-    private String name;
-    public Deck deck;
+    public Integer score;
 
-    public Player()
+    public BlackjackPlayer()
     {
-        this.deck = new Deck();
-        this.name = "Player";
+        super();
+        this.score = 0;
     }
 
-    public Player(Deck dealtDeck, String givenName)
+    public BlackjackPlayer(Deck dealtDeck, String givenName, Integer score)
     {
-        this.deck = dealtDeck;
-        this.name = givenName;
+        super(dealtDeck, givenName);
+        this.score = score;
     }
 
+    @Override
     public Integer cardScore(Card card)
     {
         switch(card.getFaceValue())
@@ -55,22 +55,4 @@ public class Player {
         }
 
     }
-
-    public Card playCard()
-    {
-        return this.deck.DrawCard();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public void setDeck(Deck deck) {
-        this.deck = deck;
-    }
-
 }
