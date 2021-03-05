@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class WarGame {
 
-
     private WarPlayer player1;
     private WarPlayer player2;
 
