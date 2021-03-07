@@ -4,24 +4,20 @@ public class LongestPalindromeSubString {
 
     public static String longestPalindrome(String s){
 
-        String[] allSubstrings = new String[s.length() * s.length()];
-        int i = 0;
-        String longestPal = "";
+        String longestPal = null;
         int longestPalLength = 0;
+        String possiblePal;
+        String trimmedString = s.replaceAll("\\s","").replace(".","");
 
-        for(int startingPosition = 0; startingPosition < s.length(); startingPosition ++){
-            // construct all strings0
-            for(int endPosition = startingPosition + 1; endPosition <= s.length(); endPosition ++){
-                allSubstrings[i] = s.substring(startingPosition, endPosition);
-                i++;            }
-        }
-        StringBuilder sb = new StringBuilder();
-        String revStr;
-        for(String possiblePal : allSubstrings){
-            if(possiblePal != null && possiblePal.equals(new StringBuilder(possiblePal).reverse().toString()) && possiblePal.length() > longestPalLength){
-                longestPalLength = possiblePal.length();
-                longestPal = possiblePal;
-            }
+        for(int startingPosition = 0; startingPosition < trimmedString.length(); startingPosition ++){
+            for(int endPosition = startingPosition + 1; endPosition <= trimmedString.length(); endPosition ++){
+                possiblePal = trimmedString.substring(startingPosition, endPosition);
+
+                if(possiblePal.equals(new StringBuilder(possiblePal).reverse().toString()) && possiblePal.length() > longestPalLength){
+                    longestPalLength = possiblePal.length();
+                    longestPal = possiblePal;
+                    }
+                }
         }
         return longestPal;
     }
