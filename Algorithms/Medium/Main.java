@@ -29,7 +29,7 @@ public class Main {
         TreeNode root = new TreeNode(1);
         TreeNode a = new TreeNode(2);
         TreeNode b = new TreeNode(3);
-        TreeNode c = new TreeNode(3);
+        TreeNode c = new TreeNode(9);
         TreeNode d = new TreeNode(4);
         TreeNode e = new TreeNode(7);
         TreeNode f = new TreeNode(8);
@@ -51,13 +51,13 @@ public class Main {
 
                                        2          3
 
-                                     3   4       7  8
+                                     9   4       7  8
 
-                                        100
+                                        0
 
          */
 
-        System.out.println(TreePathSum.treePathSum(root, 7));
+        System.out.println(TreePathSumPaths.treePathsToSum(root, 7));
 
 
 
