@@ -57,7 +57,7 @@ public class Main {
 
          */
 
-        System.out.println(TreePathSumPaths.treePathsToSum(root, 7));
+        System.out.println(TreeLevelOrder.levelOrder(root));
 
 
 
