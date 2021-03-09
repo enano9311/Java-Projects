@@ -26,39 +26,41 @@ public class Main {
 //        }
 //        catch (FileNotFoundException e) {}
 
-        TreeNode root = new TreeNode(1);
-        TreeNode a = new TreeNode(2);
-        TreeNode b = new TreeNode(3);
-        TreeNode c = new TreeNode(9);
-        TreeNode d = new TreeNode(4);
-        TreeNode e = new TreeNode(7);
-        TreeNode f = new TreeNode(8);
-        TreeNode g = new TreeNode(0);
+//        TreeNode root = new TreeNode(1);
+//        TreeNode a = new TreeNode(2);
+//        TreeNode b = new TreeNode(3);
+//        TreeNode c = new TreeNode(9);
+//        TreeNode d = new TreeNode(4);
+//        TreeNode e = new TreeNode(7);
+//        TreeNode f = new TreeNode(8);
+//        TreeNode g = new TreeNode(0);
+//
+//        root.left = a;
+//        root.right = b;
+//
+//        a.left = c;
+//        a.right = d;
+//
+//        b.left = e;
+//        b.right = f;
+//
+//        d.left = g;
+//
+//        /*
+//                                            1
+//
+//                                       2          3
+//
+//                                     9   4       7  8
+//
+//                                        0
+//
+//         */
+//
+//        System.out.println(PostOrderBinaryTreeTraversal.postOrderTraversal(root));
 
-        root.left = a;
-        root.right = b;
-
-        a.left = c;
-        a.right = d;
-
-        b.left = e;
-        b.right = f;
-
-        d.left = g;
-
-        /*
-                                            1
-
-                                       2          3
-
-                                     9   4       7  8
-
-                                        0
-
-         */
-
-        System.out.println(TreeLevelOrder.levelOrder(root));
-
+        int[][] mat = {{1,2,3},{4,5,6},{7,8,9},{12,15,10000000}};
+        System.out.println(SpiralMatrix.spiralMatrix(mat));
 
 
 
