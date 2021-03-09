@@ -4,6 +4,7 @@ package Algorithms.Medium;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,7 +26,38 @@ public class Main {
 //        }
 //        catch (FileNotFoundException e) {}
 
-        System.out.println(LetterCombinations.letterCombinations("23"));
+        TreeNode root = new TreeNode(1);
+        TreeNode a = new TreeNode(2);
+        TreeNode b = new TreeNode(3);
+        TreeNode c = new TreeNode(3);
+        TreeNode d = new TreeNode(4);
+        TreeNode e = new TreeNode(7);
+        TreeNode f = new TreeNode(8);
+        TreeNode g = new TreeNode(0);
+
+        root.left = a;
+        root.right = b;
+
+        a.left = c;
+        a.right = d;
+
+        b.left = e;
+        b.right = f;
+
+        d.left = g;
+
+        /*
+                                            1
+
+                                       2          3
+
+                                     3   4       7  8
+
+                                        100
+
+         */
+
+        System.out.println(TreePathSum.treePathSum(root, 7));
 
 
 
