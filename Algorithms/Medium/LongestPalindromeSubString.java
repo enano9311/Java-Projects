@@ -7,7 +7,7 @@ public class LongestPalindromeSubString {
         String longestPal = null;
         int longestPalLength = 0;
         String possiblePal;
-        String trimmedString = s.replaceAll("[^a-zA-Z]","");
+        String trimmedString = s.replaceAll("[^a-zA-Z]","").toLowerCase();
 
         // brute force. Make all substrings, check if they are palindromic
         // better method: iterate over list, and see what the longest palindrome at each letter is (if any)
