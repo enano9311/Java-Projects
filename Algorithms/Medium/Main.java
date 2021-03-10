@@ -58,9 +58,16 @@ public class Main {
 //         */
 //
 //        System.out.println(PostOrderBinaryTreeTraversal.postOrderTraversal(root));
+//        int[] pushed = {1,2,3,4,5};
+//        int[] popped = {4,5,3,2,1};
+//        System.out.println(ValidateStackSequences.validateStackSequences(pushed,popped));
 
-        int[][] mat = {{1,2,3},{4,5,6},{7,8,9},{12,15,10000000}};
-        System.out.println(SpiralMatrix.spiralMatrix(mat));
+
+        int[][] grid = {{1,1,1,0,1},{1,0,1,0,1},{1,1,0,0,1},{1,0,1,0,1},{1,0,1,1,1}};
+        for(int[] row: grid){
+            System.out.println(Arrays.toString(row));
+        }
+        System.out.println(NumIslands.numIslands(grid));
 
 
 
