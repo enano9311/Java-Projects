@@ -1,32 +1,22 @@
 package CardGame;
-import java.util.List;
-import java.util.Arrays;
+import CardGame.Deck.Card;
+import CardGame.Games.WarGame;
+
 import java.util.ArrayList;
-import CardGame.Card;
-import CardGame.Suit;
-import CardGame.FaceValue;
-import CardGame.Deck;
-import CardGame.WarGame;
 
 public class Game {
 
     public static void main(String[] args) {
 
-//        Deck myDeck = new Deck();
-//        System.out.println("Cards left: " + myDeck.GetAllCards().size());
-//
-//        System.out.println("You drew: " + myDeck.DrawCard());
-//        for (Card c : myDeck.GetAllCards()) {System.out.println(c.toString());}
-//        System.out.println("Cards left: " + myDeck.GetAllCards().size());
-
-        WarGame wGame = new WarGame();
+        WarGame wGame = new WarGame("Marc","Chad");
         Boolean cardsLeft = true;
+        ArrayList<Card> startingPot = new ArrayList<Card>();
         while(cardsLeft)
         {
             try
             {
                 Thread.sleep(1000);
-                wGame.DoTurn();
+                wGame.DoTurn(startingPot);
             }
             catch(Exception e) {}
 
